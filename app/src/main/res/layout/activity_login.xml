@@ -34,6 +34,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
+
+<!--    change-->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -41,7 +43,8 @@
         android:fontFamily="@font/geobold"
 
         android:gravity="center"
-        android:text="Welcome\nTo Hadirly"
+
+        android:text="Welcome\nTo Hadirlyy"
         android:textColor="@color/text"
         android:textSize="50dp"
         android:textStyle="bold"

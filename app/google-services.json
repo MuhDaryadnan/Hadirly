@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "934443120367",
+    "firebase_url": "https://hadirly-default-rtdb.firebaseio.com",
+    "project_id": "hadirly",
+    "storage_bucket": "hadirly.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:934443120367:android:074b956158df53682bcd1a",
+        "android_client_info": {
+          "package_name": "com.example.hadirly"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCET1aFkJpHj0wo10t7c6UHywgc7HN4Yg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

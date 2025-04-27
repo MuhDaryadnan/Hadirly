@@ -35,16 +35,13 @@
         app:layout_constraintVertical_bias="1.0" />
 
 
-<!--    change-->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/geobold"
-
         android:gravity="center"
-
-        android:text="Welcome\nTo Hadirlyy"
+        android:text="Welcome\nTo Hadirly"
         android:textColor="@color/text"
         android:textSize="50dp"
         android:textStyle="bold"
@@ -55,7 +52,7 @@
         app:layout_constraintVertical_bias="0.803" />
 
     <Button
-        android:id="@+id/myButton"
+        android:id="@+id/loginbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

@@ -1,5 +1,6 @@
 package com.example.hadirly;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -20,5 +21,9 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        //info login
+        SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        String nim = sharedPreferences.getString("NIM", null);  // Retrieve NIM
+        String role = sharedPreferences.getString("role", null);  // Retrieve role
     }
 }

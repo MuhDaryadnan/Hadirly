@@ -1,22 +1,17 @@
-package com.example.hadirly.dosen;
+package com.example.hadirly;
 
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.hadirly.ClassFragment;
-import com.example.hadirly.HomeFragment;
-import com.example.hadirly.R;
-import com.example.hadirly.SettingsFragment;
 import com.example.hadirly.databinding.ActivityMahasiswaBinding;
+import com.example.hadirly.dosen.DosenClass;
+import com.example.hadirly.dosen.DosenHome_Frag;
+import com.example.hadirly.dosen.DosenSettings;
 
 public class DosenActivity extends AppCompatActivity {
 

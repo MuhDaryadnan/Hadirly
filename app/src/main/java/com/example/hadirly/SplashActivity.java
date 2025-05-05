@@ -1,6 +1,7 @@
 package com.example.hadirly;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class SplashActivity extends AppCompatActivity {
+
 
 
     @Override
@@ -29,12 +31,32 @@ public class SplashActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_splash);
+
+
+
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run(){
-                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
+                SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+                String nim = sharedPreferences.getString("NIM", null);  // Retrieve NIM
+                String role = sharedPreferences.getString("role", null);  // Retrieve role
+
+                if (nim != null && role != null) {
+                    // Now you can use NIM and role to display user-specific data
+                    if (role.equals("mahasiswa")) {
+                        startActivity(new Intent(SplashActivity.this, MahasiswaActivity.class));
+                        finish();
+                    } else if (role.equals("dosen")) {
+                        startActivity(new Intent(SplashActivity.this, DosenActivity.class));
+                        finish();
+                    }
+                } else {
+                    // User is not logged in, redirect to login activity
+                    startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                    finish();
+                }
+
+
             }
         },3000);
 

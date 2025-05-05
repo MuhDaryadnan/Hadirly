@@ -1,7 +1,11 @@
 package com.example.hadirly;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -12,6 +16,10 @@ import com.example.hadirly.databinding.ActivityMahasiswaBinding;
 
 public class MahasiswaActivity extends AppCompatActivity {
 
+    SharedPreferences sharedPreferences;
+    String nim;
+    String kelas;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,22 +28,27 @@ public class MahasiswaActivity extends AppCompatActivity {
         setContentView(view);
         gantiFragment(new HomeFragment());
 
+        // ✅ Panggil SharedPreferences setelah context tersedia
+        sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        nim = sharedPreferences.getString("NIM", null);
+        String kelas = sharedPreferences.getString("kelas", null);  // Retrieve role
+
+
+        Toast.makeText(MahasiswaActivity.this, "kelas kamu: " + kelas, Toast.LENGTH_LONG).show();
+
+
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 
             if (item.getItemId() == R.id.setelan) {
-                // aksi untuk setelan
                 gantiFragment(new SettingsFragment());
             } else if (item.getItemId() == R.id.kelas) {
-                // aksi untuk kelas
                 gantiFragment(new ClassFragment());
             } else if (item.getItemId() == R.id.rumah) {
-                // aksi untuk rumah
                 gantiFragment(new HomeFragment());
             }
 
             return true;
         });
-
     }
 
     private void gantiFragment(Fragment fragment){
@@ -44,5 +57,4 @@ public class MahasiswaActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame, fragment);
         fragmentTransaction.commit();
     }
-
 }

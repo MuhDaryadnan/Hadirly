@@ -3,4 +3,8 @@
     <color name="black">#FF000000</color>
     <color name="text">#2F455C</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="gradient">
+
+    </color>
 </resources>

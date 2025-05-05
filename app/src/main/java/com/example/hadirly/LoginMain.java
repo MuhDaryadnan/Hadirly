@@ -1,9 +1,12 @@
 package com.example.hadirly;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -18,16 +21,18 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.hadirly.dosen.DosenActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.security.cert.PolicyNode;
+
 public class LoginMain extends AppCompatActivity {
     TextView username, pass, forgot;
     EditText input_username, input_pass;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +52,25 @@ public class LoginMain extends AppCompatActivity {
             return insets;
         });
 
+
         // TextViews and EditTexts
         username = findViewById(R.id.usernametxt);
         pass = findViewById(R.id.password);
         input_username = findViewById(R.id.usernameEdit);
         input_pass = findViewById(R.id.password_edit);
         Button masukgan = findViewById(R.id.loginbtn);
+
+        // SharedPreferences for saving NIM (Persistent Login)
+        sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
+
+        // Check if the user is already logged in (NIM exists in SharedPreferences)
+        String savedNim = sharedPreferences.getString("NIM", null);
+
+        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference().child("user") ;
+        if (savedNim != null) {
+            // Skip login and direct to the corresponding activity
+//
+        }
 
         // Button Login click listener
         masukgan.setOnClickListener(new View.OnClickListener() {
@@ -67,20 +85,34 @@ public class LoginMain extends AppCompatActivity {
                 }
 
                 // Access Firebase database once
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("user");
-                reference.addListenerForSingleValueEvent(new ValueEventListener() {
 
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("user");
+
+                reference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         boolean loginSuccessful = false;
 
+                        for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                            String role = childSnapshot.getKey(); // hasilnya: admin, dosen, mahasiswa
+
+                            // Simpan misalnya ke SharedPreferences (optional)
+                            sharedPreferences.edit().putString("role", role).apply();
+                        }
+
                         // Accessing the "mahasiswa" data
                         DataSnapshot mahasiswaSnapshot = dataSnapshot.child("mahasiswa");
+                        for (DataSnapshot data : dataSnapshot.getChildren()) {
+                            String kelas = String.valueOf(data.child("kelas").getValue());
+                            Log.d("FirebaseData", "Binding data: " + kelas);
+                        }
+                        String kelas = String.valueOf(dataSnapshot.child("kelas").getValue());
                         loginSuccessful = checkLogin(mahasiswaSnapshot, nim, password);
                         if (loginSuccessful) {
-                            Intent myIntent = new Intent(LoginMain.this, MahasiswaActivity.class);
-                            startActivity(myIntent);
-                            finish();
+                            // Save the NIM to SharedPreferences for persistent login
+                            sharedPreferences.edit().putString("NIM", nim).apply();
+                            sharedPreferences.edit().putString("Kelas", kelas).commit();
+                            navigateToUserActivity(nim);
                             return;
                         }
 
@@ -88,9 +120,9 @@ public class LoginMain extends AppCompatActivity {
                         DataSnapshot dosenSnapshot = dataSnapshot.child("dosen");
                         loginSuccessful = checkLogin(dosenSnapshot, nim, password);
                         if (loginSuccessful) {
-                            Intent myIntent = new Intent(LoginMain.this, DosenActivity.class);
-                            startActivity(myIntent);
-                            finish();
+                            // Save the NIM to SharedPreferences for persistent login
+                            sharedPreferences.edit().putString("NIM", nim).apply();
+                            navigateToUserActivity(nim);
                             return;
                         }
 
@@ -108,14 +140,59 @@ public class LoginMain extends AppCompatActivity {
             }
 
             private boolean checkLogin(DataSnapshot snapshot, String nim, String password) {
+
+
+
+
                 for (DataSnapshot data : snapshot.getChildren()) {
                     String storedNim = String.valueOf(data.child("nim").getValue()); // Mengonversi ke String
                     String storedPass = String.valueOf(data.child("pass").getValue()); // Mengonversi ke String
+                    String kelas = String.valueOf(data.child("kelas").getValue()).toUpperCase();
+
                     if (storedNim != null && storedPass != null && storedNim.equals(nim) && storedPass.equals(password)) {
+                        sharedPreferences.edit()
+                                .putString("kelas", kelas) // Simpan kelas ke SharedPreferences
+                                .apply();
                         return true;
                     }
                 }
                 return false;
+            }
+        });
+    }
+
+    private void navigateToUserActivity(String nim) {
+        // Based on NIM, decide where to go (Mahasiswa or Dosen)
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("user");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                DataSnapshot mahasiswaSnapshot = dataSnapshot.child("mahasiswa");
+                for (DataSnapshot data : mahasiswaSnapshot.getChildren()) {
+                    String storedNim = String.valueOf(data.child("nim").getValue());
+                    if (storedNim.equals(nim)) {
+                        startActivity(new Intent(LoginMain.this, MahasiswaActivity.class));
+                        finish();
+                        return;
+                    }
+                }
+
+                    DataSnapshot dosenSnapshot = dataSnapshot.child("dosen");
+                    String role =  dataSnapshot.child("dosen").getKey();
+                for (DataSnapshot data : dosenSnapshot.getChildren()) {
+                    String storedNim = String.valueOf(data.child("nim").getValue());
+                    if (storedNim.equals(nim)) {
+                        startActivity(new Intent(LoginMain.this, DosenActivity.class));
+                        finish();
+                        return;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(LoginMain.this, "Gagal mengambil data: " + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

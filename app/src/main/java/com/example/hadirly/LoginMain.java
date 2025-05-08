@@ -21,13 +21,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.hadirly.admin.AdminActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.security.cert.PolicyNode;
 
 public class LoginMain extends AppCompatActivity {
     TextView username, pass, forgot;
@@ -57,13 +56,11 @@ public class LoginMain extends AppCompatActivity {
         username = findViewById(R.id.usernametxt);
         pass = findViewById(R.id.password);
         input_username = findViewById(R.id.usernameEdit);
-        input_pass = findViewById(R.id.password_edit);
-        Button masukgan = findViewById(R.id.loginbtn);
+        input_pass = findViewById(R.id.nama_edit);
+        Button masukgan = findViewById(R.id.saveBTN);
 
         // SharedPreferences for saving NIM (Persistent Login)
         sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
-
-        // Check if the user is already logged in (NIM exists in SharedPreferences)
         String savedNim = sharedPreferences.getString("NIM", null);
 
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference().child("user") ;
@@ -94,10 +91,6 @@ public class LoginMain extends AppCompatActivity {
                         boolean loginSuccessful = false;
 
                         for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                            String role = childSnapshot.getKey(); // hasilnya: admin, dosen, mahasiswa
-
-                            // Simpan misalnya ke SharedPreferences (optional)
-                            sharedPreferences.edit().putString("role", role).apply();
                         }
 
                         // Accessing the "mahasiswa" data
@@ -126,6 +119,16 @@ public class LoginMain extends AppCompatActivity {
                             return;
                         }
 
+                        // Accessing the "dosen" data
+                        DataSnapshot adminSnapshot = dataSnapshot.child("admin");
+                        loginSuccessful = checkLogin(adminSnapshot, nim, password);
+                        if (loginSuccessful) {
+                            // Save the NIM to SharedPreferences for persistent login
+                            sharedPreferences.edit().putString("NIM", nim).apply();
+                            navigateToUserActivity(nim);
+                            return;
+                        }
+
                         // If login is unsuccessful
                         if (!loginSuccessful) {
                             Toast.makeText(LoginMain.this, "NIM atau Password salah", Toast.LENGTH_SHORT).show();
@@ -140,18 +143,17 @@ public class LoginMain extends AppCompatActivity {
             }
 
             private boolean checkLogin(DataSnapshot snapshot, String nim, String password) {
-
-
-
-
                 for (DataSnapshot data : snapshot.getChildren()) {
+                    String role = snapshot.getKey();
                     String storedNim = String.valueOf(data.child("nim").getValue()); // Mengonversi ke String
-                    String storedPass = String.valueOf(data.child("pass").getValue()); // Mengonversi ke String
+                    String storedPass = String.valueOf(data.child("pass").getValue());
+                    String storedEmail = String.valueOf(data.child("email").getValue());
+                    String storedNama = String.valueOf(data.child("nama").getValue());
                     String kelas = String.valueOf(data.child("kelas").getValue()).toUpperCase();
 
                     if (storedNim != null && storedPass != null && storedNim.equals(nim) && storedPass.equals(password)) {
                         sharedPreferences.edit()
-                                .putString("kelas", kelas) // Simpan kelas ke SharedPreferences
+                                .putString("kelas", kelas).putString("nim", nim).putString("email", storedEmail).putString("nama", storedNama).putString("role", role) // Simpan kelas ke SharedPreferences
                                 .apply();
                         return true;
                     }
@@ -188,11 +190,22 @@ public class LoginMain extends AppCompatActivity {
                         return;
                     }
                 }
+
+                DataSnapshot adminSnapshot = dataSnapshot.child("admin");
+                String roleadmin =  dataSnapshot.child("admin").getKey();
+                for (DataSnapshot data : adminSnapshot.getChildren()) {
+                    String storedNim = String.valueOf(data.child("nim").getValue());
+                    if (storedNim.equals(nim)) {
+                        startActivity(new Intent(LoginMain.this, AdminActivity.class));
+                        finish();
+                        return;
+                    }
+                }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(LoginMain.this, "Gagal mengambil data: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.d("FirebaseError", "Gagal mengambil data: " + error.getMessage());
             }
         });
     }

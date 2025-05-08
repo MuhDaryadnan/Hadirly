@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin.kelas.GantiKelasFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/nama"
+            android:fontFamily="@font/geobold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Matakuliah" />
+
+        <EditText
+            android:id="@+id/matkul"
+            android:layout_marginVertical="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="4dp"
+            android:ems="10"
+            android:background="@drawable/round_field"
+            android:inputType="text"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:fontFamily="@font/geobold"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dosen" />
+
+        <EditText
+            android:id="@+id/dosen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="4dp"
+            android:background="@drawable/round_field"
+            android:ems="10"
+            android:layout_marginVertical="4dp"
+            android:inputType="text"
+            android:text="dosen" />
+
+        <TextView
+            android:id="@+id/prodwawdi"
+            android:fontFamily="@font/geobold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kelas" />
+
+        <TextView
+            android:id="@+id/kelas"
+            android:background="@drawable/round_field"
+            android:paddingVertical="6dp"
+            android:paddingStart="2dp"
+            android:fontFamily="@font/geobold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kelas" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:fontFamily="@font/geobold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="semester" />
+
+        <EditText
+            android:id="@+id/semester"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_marginVertical="4dp"
+            android:paddingStart="4dp"
+            android:background="@drawable/round_field"
+            android:inputType="text"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:fontFamily="@font/geobold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tahun" />
+
+        <EditText
+            android:id="@+id/tahun"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_marginVertical="4dp"
+            android:paddingStart="4dp"
+            android:background="@drawable/round_field"
+            android:inputType="text"
+            android:text="2024/2027" />
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:fontFamily="@font/geobold"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_grad"
+            android:text="Simpan Perubahan" />
+
+    </LinearLayout>
+
+</FrameLayout>

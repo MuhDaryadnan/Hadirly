@@ -37,7 +37,7 @@
             });
 
             // Button logic
-            Button btnLogin = findViewById(R.id.loginbtn);
+            Button btnLogin = findViewById(R.id.saveBTN);
             btnLogin.setOnClickListener(v -> {
                 Intent intent = new Intent(LoginActivity.this, LoginMain.class);
                 startActivity(intent);

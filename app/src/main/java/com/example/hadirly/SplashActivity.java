@@ -13,6 +13,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.hadirly.admin.AdminActivity;
+
 public class SplashActivity extends AppCompatActivity {
 
 
@@ -48,6 +50,9 @@ public class SplashActivity extends AppCompatActivity {
                         finish();
                     } else if (role.equals("dosen")) {
                         startActivity(new Intent(SplashActivity.this, DosenActivity.class));
+                        finish();
+                    }else if (role.equals("admin")) {
+                        startActivity(new Intent(SplashActivity.this, AdminActivity.class));
                         finish();
                     }
                 } else {

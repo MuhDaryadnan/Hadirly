@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin.dosen.TambahDosenFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/namnjnja"
+            android:fontFamily="@font/geobold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama" />
+
+        <EditText
+            android:id="@+id/nama"
+            android:layout_marginVertical="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="4dp"
+            android:ems="10"
+            android:background="@drawable/round_field"
+            android:inputType="text"
+/>
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/geobold"
+            android:text="NIDN" />
+
+        <EditText
+            android:id="@+id/nidn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="4dp"
+            android:background="@drawable/round_field"
+            android:ems="10"
+            android:layout_marginVertical="4dp"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/proddwai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/geobold"
+            android:text="No HP" />
+
+        <EditText
+            android:id="@+id/nohp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:background="@drawable/round_field"
+            android:ems="10"
+            android:inputType="text"
+            android:paddingStart="4dp" />
+
+        <TextView
+            android:id="@+id/proddwai3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/geobold"
+            android:text="Email" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:background="@drawable/round_field"
+            android:ems="10"
+            android:inputType="text"
+            android:paddingStart="4dp" />
+
+        <TextView
+            android:id="@+id/proddwai4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/geobold"
+            android:text="Password" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:background="@drawable/round_field"
+            android:ems="10"
+            android:inputType="text"
+            android:paddingStart="4dp" />
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:fontFamily="@font/geobold"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_grad"
+            android:text="Tambah Dosen" />
+
+    </LinearLayout>
+
+</FrameLayout>

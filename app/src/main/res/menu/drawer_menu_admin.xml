@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/home"/>
+    <item android:title="Mahasiswa"
+        android:id="@+id/mahasiswa"
+        android:icon="@drawable/mahasiswa"/>
+    <item android:title="Dosen"
+        android:id="@+id/dosen"
+        android:icon="@drawable/dosen"/>
+    <item android:title="Kelas"
+        android:id="@+id/prodi"
+        android:icon="@drawable/kelas" />
+    <item android:title="Logout"
+        android:id="@+id/logout"
+        android:icon="@drawable/logout"/>
+</menu>

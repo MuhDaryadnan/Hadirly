@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/nama"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            android:fontFamily="@font/geobold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="nama" />
+
+        <TextView
+            android:id="@+id/info"
+            android:textSize="12sp"
+            android:fontFamily="@font/geobold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="info" />
+
+        <TextView
+            android:id="@+id/dosen"
+            android:textSize="14sp"
+            android:fontFamily="@font/geobold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="dosen" />
+
+        <TextView
+            android:id="@+id/prodi"
+            android:textSize="14sp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/geobold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="kelas" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

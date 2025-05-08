@@ -13,10 +13,10 @@
         android:layout_height="0dp"
         android:layout_marginTop="120dp"
         android:background="@drawable/round_main"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- RecyclerView appears "inside" the View -->
     <androidx.recyclerview.widget.RecyclerView
@@ -24,11 +24,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="130dp"
-        android:padding="8dp"
-        android:background="@drawable/class_grad"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/view" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -116,7 +116,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/usernameEdit" />
 
             <EditText
-                android:id="@+id/password_edit"
+                android:id="@+id/nama_edit"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -148,10 +148,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/password_edit" />
+                app:layout_constraintTop_toBottomOf="@+id/nama_edit" />
 
             <Button
-                android:id="@+id/loginbtn"
+                android:id="@+id/saveBTN"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"

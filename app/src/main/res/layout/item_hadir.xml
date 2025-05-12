@@ -9,11 +9,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingBottom="20dp"
+        android:background="@drawable/round_hadir"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
         <TextView
             android:id="@+id/matkul"
+            android:paddingTop="8dp"
+            android:paddingStart="4dp"
             android:fontFamily="@font/geobold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,6 +24,7 @@
 
         <TextView
             android:id="@+id/date"
+            android:paddingStart="4dp"
             android:fontFamily="@font/geobold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,6 +33,7 @@
         <TextView
             android:id="@+id/textView8"
             android:textColor="#00FF00"
+            android:paddingStart="4dp"
             android:textSize="12sp"
             android:fontFamily="@font/geobold"
             android:layout_width="match_parent"

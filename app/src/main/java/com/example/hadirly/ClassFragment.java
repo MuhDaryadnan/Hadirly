@@ -3,6 +3,7 @@ package com.example.hadirly;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,11 @@ public class ClassFragment extends Fragment implements ClassAdapter.OnItemClickL
         // Setup RecyclerView
         recyclerView = rootView.findViewById(R.id.recycle);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        int spacingInPixels = (int) TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics());
+
+// Add spacing between items
+        recyclerView.addItemDecoration(new VerticalSpaceItemDecoration(spacingInPixels));
 
         dataList = new ArrayList<>();
         adapter = new ClassAdapter(dataList, this);  // Pass the listener

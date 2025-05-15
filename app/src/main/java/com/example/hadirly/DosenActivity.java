@@ -57,7 +57,6 @@ public class DosenActivity extends AppCompatActivity {
         kelas = sharedPreferences.getString("kelas", null);
         String savedRole = sharedPreferences.getString("role", null);
 
-        Toast.makeText(DosenActivity.this, "Role kamu: " + savedRole, Toast.LENGTH_LONG).show();
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.setelan) {

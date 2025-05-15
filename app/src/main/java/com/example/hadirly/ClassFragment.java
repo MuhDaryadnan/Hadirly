@@ -7,6 +7,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,6 +38,7 @@ public class ClassFragment extends Fragment implements ClassAdapter.OnItemClickL
         // Ambil SharedPreferences
         sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
         String kelas = sharedPreferences.getString("kelas", null);
+        String savedNama = sharedPreferences.getString("nama", null);
 
         // Inflate layout
         View rootView = inflater.inflate(R.layout.fragment_class, container, false);
@@ -53,6 +55,9 @@ public class ClassFragment extends Fragment implements ClassAdapter.OnItemClickL
         dataList = new ArrayList<>();
         adapter = new ClassAdapter(dataList, this);  // Pass the listener
         recyclerView.setAdapter(adapter);
+
+        TextView nama=rootView.findViewById(R.id.nama2);
+        nama.setText(savedNama);
 
         // Ambil data dari Firebase
         if (kelas != null) {

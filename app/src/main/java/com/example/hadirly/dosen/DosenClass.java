@@ -107,6 +107,10 @@ public class DosenClass extends Fragment implements DosenAdapter.OnItemClickList
 
         dataList = new ArrayList<>();
         adapter = new DosenAdapter(dataList, this);  // Pass the listener
+        namaDosenText=rootView.findViewById(R.id.dosenText);
+        namaDosenText.setText(savedNama);
+
+
         recyclerView.setAdapter(adapter);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("kelas");

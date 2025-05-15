@@ -10,12 +10,14 @@ import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hadirly.R;
 import com.example.hadirly.admin.mahasiswa.MahasiswaAdapter;
 import com.example.hadirly.admin.mahasiswa.MahasiswaModel;
+import com.example.hadirly.admin.mahasiswa.TambahMahasiswaFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -47,6 +49,14 @@ public class AdminDosenFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recycle);
         searchView = view.findViewById(R.id.search);
         button = view.findViewById(R.id.button);
+
+        button.setOnClickListener(v -> {
+            TambahDosenFragment TambahMahasiswaFragment = new TambahDosenFragment(); // Buat instance fragment
+            FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame, TambahMahasiswaFragment);
+            fragmentTransaction.addToBackStack(null); // Agar bisa kembali dengan tombol back
+            fragmentTransaction.commit();
+        });
 
         // Initialize the list and adapter
         mahasiswaList = new ArrayList<>();;

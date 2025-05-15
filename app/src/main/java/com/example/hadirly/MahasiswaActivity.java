@@ -40,7 +40,6 @@ public class MahasiswaActivity extends AppCompatActivity {
         kelas = sharedPreferences.getString("kelas", null);  // Retrieve role
         String savedRole = sharedPreferences.getString("role", null);
 
-        Toast.makeText(MahasiswaActivity.this, "kelas kamu: " + savedRole, Toast.LENGTH_LONG).show();
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.setelan) {

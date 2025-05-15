@@ -47,7 +47,7 @@ public class ClassFragment extends Fragment implements ClassAdapter.OnItemClickL
         int spacingInPixels = (int) TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics());
 
-// Add spacing between items
+        // Add spacing between items
         recyclerView.addItemDecoration(new VerticalSpaceItemDecoration(spacingInPixels));
 
         dataList = new ArrayList<>();

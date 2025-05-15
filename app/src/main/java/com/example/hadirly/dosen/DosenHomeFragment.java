@@ -1,7 +1,5 @@
 package com.example.hadirly.dosen;
 
-import static android.content.Context.MODE_PRIVATE;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -30,8 +28,8 @@ import java.util.List;
 public class DosenHomeFragment extends Fragment {
 
     private static final String TAG = "DosenHomeFragment";
-    private TextView namaDosenText, infoKelasText;
-    private TextView countMataKuliah, countMahasiswa;
+    private TextView namaDosenText;
+    private TextView countMataKuliah;
     SharedPreferences sharedPreferences;
     private RecyclerView recyclerViewKelas;
     private KelasAdapter kelasAdapter;
@@ -40,9 +38,7 @@ public class DosenHomeFragment extends Fragment {
 
 
 
-    private DatabaseReference dosenRef, kelasRef;
-    private String namaDosen = "";
-    private String nim = "";
+    private DatabaseReference kelasRef;
 
     public DosenHomeFragment() {
         // Required empty public constructor
@@ -56,7 +52,7 @@ public class DosenHomeFragment extends Fragment {
 
 
         // Initialize views
-        namaDosenText = view.findViewById(R.id.namaDosenText);
+        namaDosenText = view.findViewById(R.id.dosenText);
         countMataKuliah = view.findViewById(R.id.countMataKuliah);
         recyclerViewKelas = view.findViewById(R.id.recyclerViewKelas);
 
@@ -98,7 +94,7 @@ public class DosenHomeFragment extends Fragment {
 
                         if (savedNama.equals(dosen)) {
                             total++;
-                            KelasModel kelasModel = new KelasModel(nama + " (" + kelas + ")", "Semester"+semester);
+                            KelasModel kelasModel = new KelasModel(nama + " (" + kelas + ")", "Semester "+semester);
                             Log.d("Firebase", "dosen " + nama  + ": " + total);
                             kelasList.add(kelasModel);
                         }

@@ -6,8 +6,6 @@
     android:background="@drawable/gradback"
     tools:context=".ClassFragment">
 
-    <!-- Main background view with rounded corners -->
-
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
@@ -16,10 +14,8 @@
         android:background="@drawable/round_main"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -61,26 +57,46 @@
             android:text="Nama Dosen"
             android:textColor="@color/white"
             android:textSize="18sp" />
-
     </LinearLayout>
 
-    <Button
-        android:id="@+id/absen"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/button_grad"
         android:fontFamily="@font/geobold"
-        android:text="Lakukan Absen"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:text="Batas Absen"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <!-- 🕒 Button untuk membuka TimePicker -->
+    <Button
+        android:id="@+id/btnTimePicker"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/round_field"
+        android:elevation="40dp"
+        android:fontFamily="@font/medium"
+        android:text="00:00"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView18" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/geobold"
+        android:text="Pertemuan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnTimePicker" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -90,21 +106,25 @@
         android:layout_marginEnd="20dp"
         android:background="@drawable/round_field"
         android:paddingStart="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/absen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/view"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/absen"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
         android:layout_marginStart="20dp"
-        android:fontFamily="@font/geobold"
         android:layout_marginTop="20dp"
-        android:text="Pertemuan"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/button_grad"
+        android:fontFamily="@font/geobold"
+        android:text="Buat Absen"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

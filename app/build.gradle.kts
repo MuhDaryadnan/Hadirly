@@ -9,6 +9,7 @@ android {
     namespace = "com.example.hadirly"
     compileSdk = 35
 
+
     defaultConfig {
         applicationId = "com.example.hadirly"
         minSdk = 24
@@ -47,6 +48,8 @@ dependencies {
     implementation(libs.firebase.database)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+    implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
+
     testImplementation(libs.junit)
     implementation ("com.firebaseui:firebase-ui-database:8.0.2")
     implementation("com.google.firebase:firebase-database:20.3.0")

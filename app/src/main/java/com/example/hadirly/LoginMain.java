@@ -56,7 +56,7 @@ public class LoginMain extends AppCompatActivity {
         username = findViewById(R.id.usernametxt);
         pass = findViewById(R.id.password);
         input_username = findViewById(R.id.usernameEdit);
-        input_pass = findViewById(R.id.nama_edit);
+        input_pass = findViewById(R.id.editPassword);
         Button masukgan = findViewById(R.id.saveBTN);
 
         // SharedPreferences for saving NIM (Persistent Login)

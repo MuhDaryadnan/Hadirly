@@ -17,6 +17,7 @@ import com.example.hadirly.LoginActivity;
 import com.example.hadirly.ProfileActivity;
 import com.example.hadirly.R;
 import com.example.hadirly.databinding.ActivityMahasiswaBinding;
+import com.example.hadirly.dosen.DosenClass;
 import com.google.android.material.navigation.NavigationView;
 
 public class DosenActivity extends AppCompatActivity {
@@ -62,7 +63,7 @@ public class DosenActivity extends AppCompatActivity {
             if (item.getItemId() == R.id.setelan) {
                 drawerLayout.openDrawer(GravityCompat.START);
             } else if (item.getItemId() == R.id.prodi) {
-                gantiFragment(new ClassFragment());
+                gantiFragment(new DosenClass());
             } else if (item.getItemId() == R.id.rumah) {
                 // ✅ Ganti ke DosenHomeFragment saat tab rumah ditekan
                 gantiFragment(new com.example.hadirly.dosen.DosenHomeFragment());

@@ -18,6 +18,9 @@
         android:theme="@style/Theme.HADIRLY"
         tools:targetApi="31">
         <activity
+            android:name=".dosen.BarcodeActivity"
+            android:exported="false" />
+        <activity
             android:name=".admin.AdminActivity"
             android:exported="false" />
         <activity

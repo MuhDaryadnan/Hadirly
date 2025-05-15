@@ -8,8 +8,6 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -19,9 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.EventDay;
-import com.applandeo.materialcalendarview.listeners.OnDayClickListener;
-import com.example.hadirly.admin.dosen.DosenAdapter;
-import com.example.hadirly.admin.dosen.DosenModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,10 +35,7 @@ public class HomeFragment extends Fragment {
     private CalendarView calendarView;
     private List<EventDay> eventDays = new ArrayList<>();
     private SharedPreferences sharedPreferences;
-    private DatabaseReference databaseReference;
     private RecyclerView recyclerView;
-    private SearchView searchView;
-
     private HomeAdapter adapter;
     private List<HomeModel> mahasiswaList;
     List<String> tanggal_hadir = new ArrayList<>();
@@ -92,7 +84,7 @@ public class HomeFragment extends Fragment {
                                 String key = child.getKey();
                                 String value = child.getValue(String.class);
 
-                                if (key.startsWith("h") && "Muh Daryadnan".equals(value)) {
+                                if (key.equals(savedNim) && savedNama.equals(value)) {
                                     ditemukan = true;
                                     break;
                                 }

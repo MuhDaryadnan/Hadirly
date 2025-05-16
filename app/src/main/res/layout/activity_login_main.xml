@@ -119,7 +119,7 @@
                 android:id="@+id/saveBTN"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/gradient"
                 android:fontFamily="@font/geobold"
                 android:gravity="center"
@@ -130,7 +130,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editPassword" />
+                app:layout_constraintTop_toBottomOf="@+id/showPasswordCheck" />
 
             <EditText
                 android:id="@+id/editPassword"
@@ -144,6 +144,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/password" />
+
+
+            <CheckBox
+                android:id="@+id/showPasswordCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Show Password"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editPassword" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,10 +32,14 @@ import com.google.firebase.database.ValueEventListener;
 public class LoginMain extends AppCompatActivity {
     TextView username, pass, forgot;
     EditText input_username, input_pass;
+
+
     SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
 
@@ -57,7 +62,20 @@ public class LoginMain extends AppCompatActivity {
         pass = findViewById(R.id.password);
         input_username = findViewById(R.id.usernameEdit);
         input_pass = findViewById(R.id.editPassword);
+        CheckBox showPassword = findViewById(R.id.showPasswordCheck);
         Button masukgan = findViewById(R.id.saveBTN);
+
+        showPassword.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                // Show password
+                input_pass.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+            } else {
+                // Hide password
+                input_pass.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            }
+            // Move cursor to end
+            input_pass.setSelection(input_pass.length());
+        });
 
         // SharedPreferences for saving NIM (Persistent Login)
         sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
@@ -80,6 +98,8 @@ public class LoginMain extends AppCompatActivity {
                     Toast.makeText(LoginMain.this, "NIM atau password tidak boleh kosong", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+
 
                 // Access Firebase database once
 

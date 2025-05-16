@@ -158,14 +158,7 @@ public class ScanActivity extends AppCompatActivity {
                                     finish();
                                 }
                             });
-
-
                         }
-                    }
-
-                    if (!ketemu.get()) {
-                        Toast.makeText(this, "Mata kuliah tidak ditemukan", Toast.LENGTH_SHORT).show();
-                        finish();
                     }
                 });
 

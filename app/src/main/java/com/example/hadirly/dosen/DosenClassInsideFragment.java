@@ -129,24 +129,17 @@ public class DosenClassInsideFragment extends Fragment {
         infoText.setText(info);
 
         //BTN MENAMPILKAN DAFTAR
-        if (!selectedValue.equals("Pertemuan ke-")){
-            HADIR_BTN.setOnClickListener(v -> {
-                String PERTEMUAN = mySpinner.getSelectedItem().toString();
+        HADIR_BTN.setOnClickListener(v -> {
+            String PERTEMUAN = mySpinner.getSelectedItem().toString();
 
-                //KE LIHAT KEHADIRAN
-                Intent intent = new Intent(getActivity(), LihatKehadiranActivity.class);
-                intent.putExtra("prodi", prodi);
-                intent.putExtra("matkul", matkul);
-                intent.putExtra("pertemuan", PERTEMUAN);
+            //KE LIHAT KEHADIRAN
+            Intent intent = new Intent(getActivity(), LihatKehadiranActivity.class);
+            intent.putExtra("prodi", prodi);
+            intent.putExtra("matkul", matkul);
+            intent.putExtra("pertemuan", PERTEMUAN);
 
-                startActivity(intent);
-            });
-        }else{
-            Toast.makeText(requireContext(), "Pilih Pertemuan Yang Ingin Dilihat!", Toast.LENGTH_LONG).show();
-        }
-
-
-
+            startActivity(intent);
+        });
 
         //btnabsen
         absenBTN.setOnClickListener(v -> {

@@ -45,7 +45,7 @@ public class DosenClassInsideFragment extends Fragment {
     private static final int SCAN_REQUEST_CODE = 100;
     Spinner mySpinner;
     private TextView namaText, infoText, dosenText;
-    private Button absenBTN;
+    private Button absenBTN, HADIR_BTN;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -115,21 +115,43 @@ public class DosenClassInsideFragment extends Fragment {
         String savedNama = sharedPreferences.getString("nama", null);
 
         absenBTN = rootView.findViewById(R.id.absen);
+        HADIR_BTN = rootView.findViewById(R.id.lihat);
 
         Bundle bundle = getArguments();
         String info = bundle.getString("info", "");
         String prodi = bundle.getString("prodi", "");
         String dosen = bundle.getString("dosen", "");
         String matkul = bundle.getString("matkul", "");
+        String selectedValue = mySpinner.getSelectedItem().toString();
 
         dosenText.setText(dosen);
         namaText.setText(matkul);
         infoText.setText(info);
 
+        //BTN MENAMPILKAN DAFTAR
+        if (!selectedValue.equals("Pertemuan ke-")){
+            HADIR_BTN.setOnClickListener(v -> {
+                String PERTEMUAN = mySpinner.getSelectedItem().toString();
+
+                //KE LIHAT KEHADIRAN
+                Intent intent = new Intent(getActivity(), LihatKehadiranActivity.class);
+                intent.putExtra("prodi", prodi);
+                intent.putExtra("matkul", matkul);
+                intent.putExtra("pertemuan", PERTEMUAN);
+
+                startActivity(intent);
+            });
+        }else{
+            Toast.makeText(requireContext(), "Pilih Pertemuan Yang Ingin Dilihat!", Toast.LENGTH_LONG).show();
+        }
+
+
+
+
         //btnabsen
         absenBTN.setOnClickListener(v -> {
 
-            String selectedValue = mySpinner.getSelectedItem().toString();
+
 
             if (selectedValue.equals("Pertemuan ke-")) {
                 Toast.makeText(requireContext(), "Pilih Pertemuan!", Toast.LENGTH_LONG).show();

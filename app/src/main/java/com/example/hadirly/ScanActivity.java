@@ -3,22 +3,16 @@ package com.example.hadirly;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-
 import android.util.Log;
 import android.widget.Toast;
-
 import java.text.SimpleDateFormat;
-import java.time.LocalTime;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -101,7 +95,6 @@ public class ScanActivity extends AppCompatActivity {
                                             dataF.put(savedNim, savedNama);
 
                                             //MENYIMPAN KE NODE MAHASISWA
-
                                             DatabaseReference mahasiswaRef = FirebaseDatabase.getInstance().getReference()
                                                     .child("user")
                                                     .child("mahasiswa");
